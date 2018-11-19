@@ -9,7 +9,14 @@
             </button>
         </div>
         <div class="right-header">
-            afafgag
+            <div class="notify">
+                <i class="far fa-bell bell"></i>
+                <span>5</span>
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div style="margin-right:25px">
+                <i class="fas fa-cog setting"></i>
+            </div>
         </div>
     </div>
 </template>
@@ -39,7 +46,7 @@ export default {
     width: 100%;
     left: 0px;
     height: 1px;
-    background-color: grey
+    background-color: #c6c6c6
 }
 h3{
     font-size: 22px;
@@ -56,13 +63,13 @@ h3{
     border-radius: 3px;
     overflow: hidden;
     display: flex;
-
+    font-size: 14px;
 }
 
 
 .search-text{
     border: none;
-    padding: 0 10px;
+    padding: 0 15px;
     height: 38px;
     width: 200px;
     background-color: #f4f3ef;
@@ -91,5 +98,34 @@ button{
 .right-header{
     margin-left: auto;
     order: 2;
+    display: flex;
+    flex-direction: row
+}
+
+.notify{
+    margin-right:30px;
+}
+
+.bell{
+    transition: all ease 0.25s;
+}
+
+
+.notify:hover{
+    color: cadetblue;
+}
+
+.notify:hover .bell{
+    transform:  rotate(45deg);
+}
+
+.setting{
+    transition: all ease 0.25s;
+}
+
+.setting:hover{
+    transform:  rotate(60deg);
+    transition: all ease 0.25s;
+    color: cadetblue;
 }
 </style>

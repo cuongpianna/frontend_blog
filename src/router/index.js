@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Admin from '../layout/admin/Admin'
 import Home from '../layout/public/Home'
 import Dashboard from '../features/admin/Dashboard'
+import AdminCategory from '../features/admin/AdminCategory'
 
 
 Vue.use(VueRouter);
@@ -19,7 +20,11 @@ const router = new VueRouter({
             children: [
                 {
                     path: '',
-                    component: Dashboard
+                    component: Dashboard,
+                },
+                {
+                    path: 'categories',
+                    component: AdminCategory
                 }
             ]
         }
