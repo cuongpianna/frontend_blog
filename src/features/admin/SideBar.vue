@@ -1,15 +1,17 @@
 <template>
     <div class="side-bar">
         <div class="logo">
-
+            <img src=".../assets/zed-classic.png">
         </div>
         <div class="sidebar-wrapper">
             <div class="user">
                 
             </div>
             <div class="sidebar-content">
-                <div class="div">
+                <div class="dashboard">
+                    <i class="fas fa-chart-line"></i>
                     <h3>Dashboard</h3>
+                    <i class="fas fa-caret-down" style="order:2; margin-left: auto;"></i>
                 </div>
                 <div>
                     <h3>Component</h3>
@@ -69,5 +71,23 @@ export default {
     width: calc(100% - 30px);
     height: 1px;
     background-color: hsla(0,0%,100%,.3)
+}
+.sidebar-content{
+    padding: 30px 25px;
+    color: grey;
+}
+.dashboard{
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    transition: all ease 0.2s;
+}
+h3{
+    margin: 0;
+    margin-left: 15px;
+}
+.dashboard:hover{
+    color: white;
 }
 </style>
