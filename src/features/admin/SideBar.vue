@@ -1,7 +1,7 @@
 <template>
     <div class="side-bar">
         <div class="logo">
-            <img src=".../assets/zed-classic.png">
+            <img src="../../assets/zed-classic.png" width="40px">
         </div>
         <div class="sidebar-wrapper">
             <div class="user">
@@ -89,5 +89,8 @@ h3{
 }
 .dashboard:hover{
     color: white;
+}
+.logo{
+    padding-left: 20px;
 }
 </style>

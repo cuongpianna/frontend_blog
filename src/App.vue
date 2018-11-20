@@ -1,5 +1,6 @@
 <template>
     <div>
+        <!-- <img src="./assets/zed-classic.png" alt=""> -->
         <router-view></router-view>
     </div>
 </template>
