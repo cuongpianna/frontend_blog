@@ -1,21 +1,29 @@
 <template>
     <div class="content">
-        <div class="title">
-            <input type="text" placeholder="Tiêu đề">
-        </div>
-        <div class="body">
-            <textarea v-model="source" placeholder="Nội dung bài viết"></textarea>
-            <!-- <vue-markdown :source="source" class="md"></vue-markdown> -->
-            <vue-markdown class="result-html full-height md" :watches="['show','html','breaks','linkify','emoji','typographer','toc']"
-          :source="source" :show="show" :html="html" :breaks="breaks" :linkify="linkify"
-          :emoji="emoji" :typographer="typographer" :toc="toc" v-on:rendered="allRight"
-          v-on:toc-rendered="tocAllRight" toc-id="toc"></vue-markdown>
-        </div>
+        <form action="">
+            <div class="title">
+                <input type="text" placeholder="Tiêu đề" v-model="title">
+            </div>
+            <div class="tag">
+                <select v-model="selected">
+                    <option value="Duc" v-for="cate in allCategories" :value="cate.id">{{cate.name}}</option>
+                </select>
+            </div>
+            <div class="body">
+                <textarea v-model="source" placeholder="Nội dung bài viết"></textarea>
+                <!-- <vue-markdown :source="source" class="md"></vue-markdown> -->
+                <vue-markdown class="result-html full-height md" :source="source"></vue-markdown>
+            </div>
+            <div class="submit">
+                <button @click="createPost">Lưu bài</button>
+            </div>
+        </form>
     </div>
 </template>
 
 <script>
 import VueMarkdown from 'vue-markdown';
+import {mapGetters, mapActions} from 'vuex';
 
 export default {
     name: 'NewPost',
@@ -24,6 +32,8 @@ export default {
     },
     data(){
         return{
+            title: '',
+            selected: 3,
             source: "",
             show: true,
             html: false,
@@ -33,6 +43,20 @@ export default {
             typographer: true,
             toc: false
         }
+    },
+    computed: mapGetters(['allCategories']),
+    methods: {
+        ...mapActions(['getCategories']),
+        createPost(){
+            this.$store.dispatch('createPost', {
+                title: this.title,
+                category_id: parseInt(this.selected),
+                body: this.source
+            })
+        }
+    },
+    created() {
+        this.getCategories();
     }
 }
 </script>
@@ -51,7 +75,7 @@ export default {
     padding: 0 15px;
 }
 .body{
-    margin-top: 50px;
+    margin-top: 35px;
     display: flex;
 }
 .body textarea{
@@ -65,5 +89,27 @@ export default {
     border: 1px solid grey;
     padding: 10px;
     overflow: scroll;
+}
+.tag{
+    margin-top: 30px;
+}
+.tag select{
+    height: 40px;
+    width: 300px;
+    border-radius: 4px;
+    padding: 0 10px;
+    transition: all ease .5s;
+}
+.submit{
+    margin-top: 20px;
+}
+.submit button{
+    height: 34px;
+    width: 90px;
+    border-radius: 10px;
+    margin-left: 880px;
+    font-weight: bold;
+    color: white;
+    background-color: springgreen
 }
 </style>
