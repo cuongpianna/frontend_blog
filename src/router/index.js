@@ -4,6 +4,7 @@ import Admin from '../layout/admin/Admin'
 import Home from '../layout/public/Home'
 import Dashboard from '../features/admin/Dashboard'
 import AdminCategory from '../features/admin/AdminCategory'
+import AdminListPosts from '../features/admin/AdminListPosts'
 
 
 Vue.use(VueRouter);
@@ -25,6 +26,10 @@ const router = new VueRouter({
                 {
                     path: 'categories',
                     component: AdminCategory
+                },
+                {
+                    path: 'posts',
+                    component: AdminListPosts
                 }
             ]
         }
