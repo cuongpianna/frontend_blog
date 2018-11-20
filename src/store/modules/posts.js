@@ -1,4 +1,4 @@
-import {getPosts} from '../../api/posts';
+import {getPosts, createPost} from '../../api/posts';
 
 const state = {
     posts: []
@@ -13,7 +13,10 @@ const actions = {
         const response = await getPosts();
         commit('setPosts', {posts: response.data.items})
     },
-    
+    async createPost({commit}, posts){
+        console.log(posts);
+        const response = await createPost(posts);
+    }
 }
 
 const mutations = {
