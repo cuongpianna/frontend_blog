@@ -6,7 +6,7 @@
             </div>
             <div class="tag">
                 <select v-model="selected">
-                    <option value="Duc" v-for="cate in allCategories" :value="cate.id">{{cate.name}}</option>
+                    <option v-for="cate in allCategories" :value="cate.id" :key="cate.id">{{cate.name}}</option>
                 </select>
             </div>
             <div class="body">
