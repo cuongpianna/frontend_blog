@@ -14,7 +14,12 @@
                 <!-- <vue-markdown :source="source" class="md"></vue-markdown> -->
                 <vue-markdown class="result-html full-height md" :source="source"></vue-markdown>
             </div>
+            
             <div class="submit">
+                <div class="upload-btn-wrapper">
+                    <button class="btn">Upload a file</button>
+                    <input type="file" name="myfile"  @change="uploadImage($event.target.files[0])"/>
+                </div>
                 <button @click="createPost">Lưu bài</button>
             </div>
         </form>
@@ -53,6 +58,11 @@ export default {
                 category_id: parseInt(this.selected),
                 body: this.source
             })
+        },
+        async uploadImage(image){
+            const response = await this.$store.dispatch('uploadImage', image);
+            console.log(response);
+            this.source = this.source + `![${response.data.file_name}](${response.data.file_url})`;
         }
     },
     created() {
@@ -102,14 +112,45 @@ export default {
 }
 .submit{
     margin-top: 20px;
+    display: flex
 }
 .submit button{
     height: 34px;
     width: 90px;
     border-radius: 10px;
-    margin-left: 880px;
+    /* margin-left: 880px; */
+    order: 2;
+    margin-left: auto;
+    margin-right: 20px;
     font-weight: bold;
     color: white;
     background-color: springgreen
+}
+form{
+    position: relative;
+}
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  width: 200px  !important;
+  border: 2px solid gray !important;
+  color: gray !important;
+  background-color: white !important;
+  border-radius: 8px !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  width: 200px !important;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
 }
 </style>

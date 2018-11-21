@@ -18,6 +18,12 @@ export function createPost(post){
     // })
 }
 
+export async function uploadImage(image){
+    var formData = new FormData();
+    formData.append('file', image);
+    return await axios.post(`${ROOT_URL}/upload`, formData);
+}
+
 export function getPosts(){
     return axios.get(`${API_URL}/posts`)
 }
