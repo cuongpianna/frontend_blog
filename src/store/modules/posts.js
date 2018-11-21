@@ -1,4 +1,4 @@
-import {getPosts, createPost} from '../../api/posts';
+import {getPosts, createPost, uploadImage} from '../../api/posts';
 
 const state = {
     posts: []
@@ -16,6 +16,11 @@ const actions = {
     async createPost({commit}, posts){
         console.log(posts);
         const response = await createPost(posts);
+    },
+    async uploadImage({commit}, image){
+        console.log(image);
+        const response = await uploadImage(image);
+        return response;
     }
 }
 
