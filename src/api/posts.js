@@ -18,12 +18,20 @@ export function createPost(post){
     // })
 }
 
-export async function uploadImage(image){
+
+export function uploadImage(image){
     var formData = new FormData();
     formData.append('file', image);
-    return await axios.post(`${ROOT_URL}/upload`, formData);
+    return axios.post(`${ROOT_URL}/upload`, formData,{ onUploadProgress: uploadEvent => {
+                console.log(uploadEvent);
+            }
+        });
 }
 
 export function getPosts(){
-    return axios.get(`${API_URL}/posts`)
+    return axios.get(`${ROOT_URL}/posts`)
+}
+
+export function getPost(id){
+    return axios.get(`${ROOT_URL}/posts/${id}`)
 }
