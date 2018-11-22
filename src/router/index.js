@@ -6,6 +6,7 @@ import Dashboard from '../features/admin/Dashboard'
 import AdminCategory from '../features/admin/AdminCategory'
 import AdminListPosts from '../features/admin/AdminListPosts'
 import NewPost from '../features/admin/NewPost'
+import AdminPostDetail from '../features/admin/AdminPostDetail.vue'
 
 
 Vue.use(VueRouter);
@@ -35,6 +36,10 @@ const router = new VueRouter({
                 {
                     path: 'posts/create',
                     component: NewPost
+                },
+                {
+                    path: 'posts/:id',
+                    component: AdminPostDetail
                 }
             ]
         }

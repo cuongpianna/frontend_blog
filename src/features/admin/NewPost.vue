@@ -1,6 +1,5 @@
 <template>
     <div class="content">
-        <form action="">
             <div class="title">
                 <input type="text" placeholder="Tiêu đề" v-model="title">
             </div>
@@ -22,7 +21,6 @@
                 </div>
                 <button @click="createPost">Lưu bài</button>
             </div>
-        </form>
     </div>
 </template>
 
@@ -61,7 +59,6 @@ export default {
         },
         async uploadImage(image){
             const response = await this.$store.dispatch('uploadImage', image);
-            console.log(response);
             this.source = this.source + `![${response.data.file_name}](${response.data.file_url})`;
         }
     },
